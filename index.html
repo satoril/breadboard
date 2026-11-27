@@ -1,7 +1,7 @@
-<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Breadboard műhely v1.0.10 – áramköri gyakorlatok</title><style>
+<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Breadboard műhely v1.0.11 – áramköri gyakorlatok</title><style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17283a;background:#edf2f6;--blue:#225da8;--green:#167044}*{box-sizing:border-box}body{margin:0}header{background:#16334e;color:white;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font-size:23px;margin:0}header small{color:#c3d6e7}main{max-width:1450px;margin:auto;padding:16px;display:grid;gap:12px}.card{background:white;border:1px solid #d5dfe8;border-radius:12px;padding:14px;box-shadow:0 2px 6px #1734510b}h2{font-size:17px;margin:0 0 8px}p{margin:6px 0;line-height:1.45}button,select{font:inherit;border:1px solid #b9c9d7;border-radius:7px;background:white;color:#19354c;padding:8px 11px;cursor:pointer}button:hover{background:#e8f1fa}button:focus-visible,select:focus-visible{outline:3px solid #f1a62a;outline-offset:2px}button:disabled{opacity:.45;cursor:default}button.active{background:#dcecff;border-color:#2467b3;box-shadow:inset 0 0 0 1px #2467b3}.primary{background:#225da8;color:white;border-color:#225da8}.primary:hover{background:#174d90}.success{background:#167044;color:white;border-color:#167044}.success:hover{background:#115b37}.tabs,.tools,.actions,.testbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.tabs button{text-align:left;flex:1;min-width:145px}.tabs small{display:block;color:#546678}.lesson{display:grid;grid-template-columns: minmax(270px,1fr) minmax(360px,1.3fr);gap:16px;align-items:center}.schematic{width:100%;height:145px;display:block;background:#f8fafc;border:1px solid #e0e7ef;border-radius:8px}.work{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px;align-items:start}.palette{display:grid;gap:7px}.palette button{text-align:left;display:flex;align-items:center;gap:9px;min-height:42px}.swatch{width:12px;height:12px;border:1px solid #667;border-radius:50%;display:inline-block}.small{font-size:13px;color:#516477}.toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.boardscroll{overflow:auto;background:#dce6ee;border:1px solid #c6d2dd;border-radius:8px}#board{width:100%;min-width:820px;height:auto;display:block;touch-action:none;user-select:none}#board .hole{cursor:crosshair}#board .part,#board .wirehit{cursor:grab}#board .part:active{cursor:grabbing}.readout{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px}.pill{border:1px solid #ccd9e5;background:#f2f6fa;padding:5px 9px;border-radius:6px;font-size:13px}.feedback{border-left:4px solid #94a8ba;padding:9px 12px;background:#f2f6fa;border-radius:5px;min-height:44px;white-space:pre-line}.feedback.good{border-color:#16834b;background:#e8f7ed;color:#145333}.feedback.bad{border-color:#ce7421;background:#fff3e5;color:#793c11}.feedback.danger{border-color:#bd3131;background:#ffeded;color:#842222}.bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#53687a}kbd{background:#edf1f5;border:1px solid #ccd5de;border-radius:3px;padding:1px 4px}#hold{touch-action:none;user-select:none}#hold.down{background:#315c41;color:white}details summary{cursor:pointer;font-weight:600}footer{color:#526579;font-size:12px;text-align:center;padding:4px 0 16px}@media(max-width:850px){.lesson,.bottom{grid-template-columns:1fr}.work{grid-template-columns:1fr}.palette{display:flex;flex-wrap:wrap}.palette button{min-height:36px}.schematic{height:135px}main{padding:9px}header{padding:13px}}
 #statsbar{display:flex;justify-content:center;align-items:center;gap:6px 18px;flex-wrap:wrap;margin:7px auto 4px;padding:8px 12px;border-top:1px solid #d5dfe8;font-size:12px;color:#526579}#statsbar strong{font-variant-numeric:tabular-nums;color:#233b50}#statsnotice{font-size:11px;color:#647689}#statsnotice a{color:inherit}#statsbar span{white-space:nowrap}
-</style></head><body><header><div><h1>Breadboard műhely <span style="font-size:13px;font-weight:500;color:#c3d6e7;white-space:nowrap">v1.0.10</span></h1><small>Kapcsolási rajzból működő áramkör · ESP32 alapok</small></div><div id="progress" aria-live="polite"></div></header><main>
+</style></head><body><header><div><h1>Breadboard műhely <span style="font-size:13px;font-weight:500;color:#c3d6e7;white-space:nowrap">v1.0.11</span></h1><small>Kapcsolási rajzból működő áramkör · ESP32 alapok</small></div><div id="progress" aria-live="polite"></div></header><main>
 <section class="card"><div class="tabs" id="tabs"></div></section>
 <section class="card lesson"><div><h2 id="lessonTitle"></h2><p id="lessonText"></p><p class="small" id="lessonGoal"></p></div><svg id="schematic" class="schematic" viewBox="0 0 560 150" role="img" aria-label="Megépítendő kapcsolási rajz"></svg></section>
 <div class="work"><aside class="card"><h2>Alkatrészek</h2><div class="palette" id="palette"></div><p class="small">Válassz eszközt, majd kattints a furatra. A zöld előnézet beilleszthető, a piros nem.</p><hr style="border:0;border-top:1px solid #dae2eb"><h2>Elhelyezés</h2><div class="actions"><button id="rotate" title="R">↻ Forgatás</button><button id="move">Mozgatás</button><button id="delete">Törlés</button></div><p class="small" id="rotLabel"></p><label class="small">Ellenállás / LED lábtávolsága <select id="span" aria-label="Ellenállás vagy LED lábtávolsága"><option value="1">1 osztás</option><option value="2">2 osztás</option><option value="3" selected>3 osztás</option><option value="4">4 osztás</option><option value="5">5 osztás</option><option value="6">6 osztás</option><option value="7">7 osztás</option></select></label><p class="small">Vezetékszín</p><div class="actions" id="colors"></div><p class="small"><kbd>R</kbd> forgatás · <kbd>Esc</kbd> megszakítás · <kbd>Del</kbd> törlés · <kbd>Ctrl</kbd>+<kbd>Z</kbd> visszavonás</p></aside>
@@ -110,40 +110,92 @@ function rotate(){let p=current().parts.find(p=>p.id===selected);if(!p&&!TYPES[t
 $('rotate').onclick=rotate;$('move').onclick=()=>{let p=current().parts.find(p=>p.id===selected);if(p){moving=p.id;rot=p.rot;span=p.span;render();}};$('span').onchange=()=>{let v=+$('span').value,p=current().parts.find(p=>p.id===selected);if(p&&(p.type.startsWith('R')||p.type==='LED')&&!moving){let pins=canPlace(p.type,p.anchor,p.rot,v,p.id);if(!pins){$('span').value=span;setFeedback('A módosított lábtávolság nem fér el.','bad');return;}snapshot();p.span=v;p.pins=pins;span=v;changed();}else{span=v;render();}};
 function remove(){if(!selected)return;snapshot();let c=current();c.parts=c.parts.filter(p=>p.id!==selected);c.wires=c.wires.filter(w=>w.id!==selected);selected=null;moving=null;changed();}$('delete').onclick=remove;
 function undo(){if(!history.length)return;builds[taskIndex]=history.pop();selected=null;moving=null;start=null;changed();}$('undo').onclick=undo;$('reset').onclick=()=>{if(!current().parts.length&&!current().wires.length)return;snapshot();builds[taskIndex]={parts:[],wires:[]};selected=null;start=null;moving=null;changed();};$('gpio').onclick=()=>{gpio=!gpio;renderBoard();};$('hold').onpointerdown=e=>{e.preventDefault();$('hold').setPointerCapture(e.pointerId);pressed=true;renderBoard();};for(let event of ['pointerup','pointercancel','lostpointercapture'])$('hold').addEventListener(event,()=>{pressed=false;renderBoard();});$('hold').onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();pressed=true;renderBoard();}};$('hold').onkeyup=e=>{if(e.key===' '||e.key==='Enter'){pressed=false;renderBoard();}};window.addEventListener('blur',()=>{if(pressed){pressed=false;renderBoard();}});
-$('check').onclick=()=>{let res=validate(current(),task());if(res.ok&&!done[taskIndex])trackCompletion(taskIndex);done[taskIndex]=res.ok;setFeedback(res.msg,res.ok?'good':res.kind||'bad');save();render();};$('hint').onclick=()=>{let hints=task().hints;setFeedback(hints[Math.min(hintCount++,hints.length-1)],'');if(hintCount>=2){$('nets').checked=true;renderBoard();}};$('next').onclick=()=>setTask(Math.min(taskIndex+1,TASKS.length-1));window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key.toLowerCase()==='r'){e.preventDefault();rotate();}if(e.key==='Delete'){e.preventDefault();remove();}if(e.key==='Escape'){choose('select');}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo();}});
+$('check').onclick=()=>{let res=validate(current(),task());if(res.ok)trackCompletion(taskIndex);done[taskIndex]=res.ok;setFeedback(res.msg,res.ok?'good':res.kind||'bad');save();render();};$('hint').onclick=()=>{let hints=task().hints;setFeedback(hints[Math.min(hintCount++,hints.length-1)],'');if(hintCount>=2){$('nets').checked=true;renderBoard();}};$('next').onclick=()=>setTask(Math.min(taskIndex+1,TASKS.length-1));window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key.toLowerCase()==='r'){e.preventDefault();rotate();}if(e.key==='Delete'){e.preventDefault();remove();}if(e.key==='Escape'){choose('select');}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo();}});
 // Public aggregate counters. No token, student identity, or circuit data is sent.
 const STATS_BASE='https://satoril.goatcounter.com', STATS_PATH='/breadboard/', SOLVED_EVENT='breadboard-task-completed';
+const STATS_LEDGER_KEY='breadboard-stats-completions-v1', STATS_INTERVAL=300000, STATS_AFTER_COMPLETION=10000;
 const statsEnabled=location.protocol==='https:'&&location.hostname==='satoril.github.io'&&navigator.doNotTrack!=='1'&&navigator.globalPrivacyControl!==true;
-let statsReady=false, pendingStats=[], countedTasks=new Set();
-function trackCompletion(i){
- if(!statsEnabled||countedTasks.has(i))return;
- countedTasks.add(i);
- const event={path:SOLVED_EVENT,title:'Breadboard – sikeres feladatteljesítés',event:true,no_session:true,referrer:''};
- const detail={...event,path:SOLVED_EVENT+'-'+(i+1),title:'Breadboard – '+TASKS[i].name};
- if(statsReady){try{window.goatcounter.count(event);window.goatcounter.count(detail);}catch(e){}}else pendingStats.push(event,detail);
+let statsReady=false, pendingStats=[], statsRefreshInFlight=null, statsRefreshTimer=null;
+// Component IDs are monotonic within the saved workshop. Count a rebuild only
+// when all required components are newly placed since its last counted success.
+// The independent per-task high-water marks also suppress undo/reload duplicates.
+let statsLastParts=TASKS.map(()=>0);
+if(statsEnabled)try{
+ const stored=JSON.parse(localStorage.getItem(STATS_LEDGER_KEY)||'null');
+ if(Array.isArray(stored))statsLastParts=TASKS.map((_,i)=>Number.isSafeInteger(stored[i])&&stored[i]>=0?stored[i]:0);
+}catch(e){}
+function completionNumber(c,last){
+ const ids=c.parts.map(p=>/^p[1-9][0-9]*$/.test(p.id)?Number(p.id.slice(1)):NaN);
+ if(!ids.length||ids.some(n=>!Number.isSafeInteger(n)||n<=last))return null;
+ return Math.max(...ids);
 }
-async function readStat(id,path,query=''){
+function sendCompletion(event){
+ if(statsReady){try{window.goatcounter.count(event);}catch(e){}}else pendingStats.push(event);
+}
+function trackCompletion(i){
+ if(!statsEnabled)return;
+ const number=completionNumber(builds[i],statsLastParts[i]);
+ if(number===null)return;
+ statsLastParts[i]=number;
+ try{localStorage.setItem(STATS_LEDGER_KEY,JSON.stringify(statsLastParts));}catch(e){}
+ sendCompletion({path:SOLVED_EVENT+'-'+(i+1),title:'Breadboard – '+TASKS[i].name,event:true,no_session:true,referrer:''});
+ scheduleStatsRefresh();
+}
+function parseStatCount(raw){
+ if(typeof raw==='number')return Number.isSafeInteger(raw)&&raw>=0?raw:null;
+ if(typeof raw!=='string')return null;
+ const v=raw.trim();
+ if(!/^(?:[0-9]+|[0-9]{1,3}(?:[,. \u00a0\u202f][0-9]{3})+)$/.test(v))return null;
+ const n=Number(v.replace(/[,. \u00a0\u202f]/g,''));
+ return Number.isSafeInteger(n)&&n>=0?n:null;
+}
+async function readStat(path,query=''){
  try{
   const opts={credentials:'omit',referrerPolicy:'no-referrer'};
   if(typeof AbortSignal!=='undefined'&&typeof AbortSignal.timeout==='function')opts.signal=AbortSignal.timeout(6000);
   const res=await fetch(STATS_BASE+'/counter/'+encodeURIComponent(path)+'.json'+query,opts);
-  if(!res.ok)throw Error('Counter unavailable');
+  // GoatCounter returns a zero JSON counter with 404 for an unknown path.
+  // Never interpret an arbitrary 404, permission error or invalid payload as zero.
+  if(!res.ok&&res.status!==404)return null;
   const data=await res.json();
-  if(!/^[0-9][0-9, .\u00a0\u202f]*$/.test(String(data.count)))throw Error('Invalid counter');
-  $(id).textContent=String(data.count);
- }catch(e){$(id).textContent='—';$(id).title='A számláló jelenleg nem érhető el vagy nincs engedélyezve.';}
+  const value=parseStatCount(data?.count);
+  if(res.status===404&&(value!==0||parseStatCount(data?.count_unique)!==0))return null;
+  return value;
+ }catch(e){return null;}
+}
+function showStat(id,value){
+ const el=$(id);
+ el.textContent=value===null?'—':value.toLocaleString('hu-HU');
+ el.title=value===null?'A számláló adata nem érhető el.':'A GoatCounter legutóbbi elérhető adata; késleltetve frissülhet.';
+}
+function refreshStats(){
+ if(!statsEnabled)return Promise.resolve();
+ if(statsRefreshInFlight)return statsRefreshInFlight;
+ statsRefreshInFlight=Promise.all([
+  readStat(STATS_PATH),readStat(STATS_PATH,'?start=week'),
+  ...TASKS.map((_,i)=>readStat(SOLVED_EVENT+'-'+(i+1)))
+ ]).then(([total,week,...tasks])=>{
+  showStat('statsTotal',total);showStat('statsWeek',week);
+  tasks.forEach((value,i)=>showStat('statsTask'+(i+1),value));
+  const sum=tasks.every(n=>n!==null)?tasks.reduce((a,b)=>a+b,0):null;
+  showStat('statsSolved',Number.isSafeInteger(sum)?sum:null);
+ }).finally(()=>{statsRefreshInFlight=null;});
+ return statsRefreshInFlight;
+}
+function scheduleStatsRefresh(){
+ if(!statsEnabled||statsRefreshTimer!==null)return;
+ statsRefreshTimer=setTimeout(()=>{statsRefreshTimer=null;refreshStats();},STATS_AFTER_COMPLETION);
 }
 function initStats(){
  if(!statsEnabled){$('statsbar').hidden=true;$('statsbar').style.display='none';$('statsnotice').textContent='Statisztikai adatküldés kikapcsolva (offline vagy böngésző adatvédelmi beállítás).';return;}
+ $('statsTasks').innerHTML=TASKS.map((t,i)=>'<span title="'+(i+1)+'. '+t.name+'">'+(i+1)+': <strong id="statsTask'+(i+1)+'">—</strong></span>').join(' · ');
  const js=document.createElement('script');
  js.async=true;js.src='https://gc.zgo.at/count.js';js.referrerPolicy='no-referrer';
  js.setAttribute('data-goatcounter',STATS_BASE+'/count');
  js.setAttribute('data-goatcounter-settings',JSON.stringify({path:STATS_PATH,title:'Breadboard műhely',referrer:'',no_events:true}));
- js.onload=()=>{statsReady=typeof window.goatcounter?.count==='function';if(statsReady)for(const e of pendingStats){try{window.goatcounter.count(e);}catch(err){}}pendingStats=[];};
+ js.onload=()=>{statsReady=typeof window.goatcounter?.count==='function';if(statsReady){for(const e of pendingStats){try{window.goatcounter.count(e);}catch(err){}}if(pendingStats.length)scheduleStatsRefresh();}pendingStats=[];};
  js.onerror=()=>{pendingStats=[];};document.body.appendChild(js);
- readStat('statsTotal',STATS_PATH);readStat('statsWeek',STATS_PATH,'?start=week');readStat('statsSolved',SOLVED_EVENT);
- $('statsTasks').innerHTML=TASKS.map((t,i)=>'<span title="'+(i+1)+'. '+t.name+'">'+(i+1)+': <strong id="statsTask'+(i+1)+'">—</strong></span>').join(' · ');
- TASKS.forEach((t,i)=>readStat('statsTask'+(i+1),SOLVED_EVENT+'-'+(i+1)));
+ refreshStats();setInterval(()=>{if(document.visibilityState!=='hidden')refreshStats();},STATS_INTERVAL);
 }
 render();initStats();
 </script></body></html>
